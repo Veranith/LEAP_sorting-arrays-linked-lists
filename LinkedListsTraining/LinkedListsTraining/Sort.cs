@@ -32,7 +32,18 @@ namespace LinkedListsTraining
 
         public static void Selection(int[] arr)
         {
-            throw new NotImplementedException();
+            for (int firstIndex = 0; firstIndex < arr.Length - 1; firstIndex++)
+            {
+                var lowestIndex = firstIndex;
+                for (int secondIndex = firstIndex + 1; secondIndex < arr.Length; secondIndex++)
+                {
+                    if (arr[lowestIndex] > arr[secondIndex])
+                    {
+                        lowestIndex = secondIndex;
+                    }
+                }
+                Swap(arr, firstIndex, lowestIndex);
+            }
         }
 
         public static void Insertion(int[] arr)
