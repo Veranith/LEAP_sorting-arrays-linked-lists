@@ -10,8 +10,25 @@ namespace LinkedListsTraining
     {
         public static void Bubble(int[] arr)
         {
-            throw new NotImplementedException();
+            while (true)
+            {
+                var count = 0;
+                for (int i = 0; i < arr.Length - 1; i++)
+                {
+                    if (arr[i] > arr[i + 1])
+                    {
+                        Swap(arr, i, i + 1);
+                        count++;
+                    }
+                }
+                if (count == 0)
+                {
+                    break;
+                }
+                count = 0;
+            }
         }
+
 
         public static void Selection(int[] arr)
         {
@@ -26,6 +43,12 @@ namespace LinkedListsTraining
         public static void MergeSort(int[] arr)
         {
             throw new NotImplementedException();
+        }
+        private static void Swap(int[] arr, int firstIndex, int secondIndex)
+        {
+            var temp = arr[firstIndex];
+            arr[firstIndex] = arr[secondIndex];
+            arr[secondIndex] = temp;
         }
     }
 }
