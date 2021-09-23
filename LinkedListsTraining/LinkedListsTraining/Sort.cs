@@ -48,7 +48,16 @@ namespace LinkedListsTraining
 
         public static void Insertion(int[] arr)
         {
-            throw new NotImplementedException();
+            for (int firstIndex = 1; firstIndex < arr.Length; firstIndex++)
+            {
+                for (int secondIndex = 0; secondIndex < firstIndex; secondIndex++)
+                {
+                    if (arr[firstIndex] < arr[secondIndex])
+                    {
+                        Swap(arr, firstIndex, secondIndex);
+                    }
+                }
+            }
         }
 
         public static void MergeSort(int[] arr)
