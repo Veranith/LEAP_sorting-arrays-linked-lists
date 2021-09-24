@@ -60,10 +60,72 @@ namespace LinkedListsTraining
             }
         }
 
-        public static void MergeSort(int[] arr)
+        public static int[] MergeSort(int[] arr)
         {
-            throw new NotImplementedException();
+            // Base case
+            if (arr.Length <= 1) return arr;
+
+            // Split array
+            //decimal middle = arr.Length / 2;
+            //var middle = (int)Math.Ceiling((decimal)(arr.Length / 2.0));
+            int middle = arr.Length / 2;
+            var topArray = arr.Take(middle).ToArray();
+            var bottomArray = arr.Skip(middle).ToArray();
+
+            // Recursively sort each side
+            topArray = MergeSort(topArray);
+            bottomArray = MergeSort(bottomArray);
+
+
+            // Merge results
+            return Combine(topArray, bottomArray);
+
         }
+
+        private static int[] Combine(int[] topArray, int[] bottomArray)
+        {
+            var sortedArray = new int[topArray.Length + bottomArray.Length];
+
+            var topIndex = 0;
+            var bottomIndex = 0;
+            var sortedIndex = 0;
+
+            while (topIndex < topArray.Length && bottomIndex < bottomArray.Length)
+            {
+                if (bottomArray[bottomIndex] > topArray[topIndex])
+                {
+                    sortedArray[sortedIndex] = topArray[topIndex];
+                    topIndex++;
+                }
+                else
+                {
+                    sortedArray[sortedIndex] = bottomArray[bottomIndex];
+                    bottomIndex++;
+                }
+                sortedIndex++;
+            }
+
+            if (topIndex < topArray.Length)
+            {
+                for (int i = topIndex; i < topArray.Length; i++)
+                {
+                    sortedArray[sortedIndex] = topArray[i];
+                    sortedIndex++;
+                }
+            }
+            else
+            {
+                for (int i = bottomIndex; i < bottomArray.Length; i++)
+                {
+                    sortedArray[sortedIndex] = bottomArray[i];
+                    sortedIndex++;
+                }
+            }
+
+
+            return sortedArray;
+        }
+
         private static void Swap(int[] arr, int firstIndex, int secondIndex)
         {
             var temp = arr[firstIndex];
