@@ -24,5 +24,31 @@ namespace LinkedListTraining_tests
             //Assert
             AssertLinkedLists.NodesHaveEqualValue(expected, actual);
         }
+
+        [TestMethod]
+        public void ReverseList_Empty_ReturnsNull()
+        {
+            //Arrange
+            var input = LinkedListBuilder.CreateSinglyLinkedList(new int[] {});
+            var expected = LinkedListBuilder.CreateSinglyLinkedList(new int[] { });
+            var sut = new Solution();
+            //Act
+            var actual = sut.ReverseList(input);
+            //Assert
+            AssertLinkedLists.NodesHaveEqualValue(expected, actual);
+        }
+
+        [TestMethod]
+        public void ReverseList_SingleNumber_ReturnsNumber()
+        {
+            //Arrange
+            var input = LinkedListBuilder.CreateSinglyLinkedList(new int[] { 1 });
+            var expected = LinkedListBuilder.CreateSinglyLinkedList(new int[] { 1 });
+            var sut = new Solution();
+            //Act
+            var actual = sut.ReverseList(input);
+            //Assert
+            AssertLinkedLists.NodesHaveEqualValue(expected, actual);
+        }
     }
 }
